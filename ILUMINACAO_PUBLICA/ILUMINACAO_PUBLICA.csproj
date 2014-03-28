@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201403281553418_initial.Designer.cs">
       <DependentUpon>201403281553418_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201403282049273_merge.cs" />
+    <Compile Include="Migrations\201403282049273_merge.Designer.cs">
+      <DependentUpon>201403282049273_merge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Ocorrencia.cs" />
@@ -362,6 +366,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201403281553418_initial.resx">
       <DependentUpon>201403281553418_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403282049273_merge.resx">
+      <DependentUpon>201403282049273_merge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,11 +20,11 @@ namespace ILUMINACAO_PUBLICA
         protected void Application_Start()
         {
 #if DEBUG
-           var migrator = new DbMigrator(new Configuration());
-          // migrator.Update();
+          var migrator = new DbMigrator(new Configuration());
+          migrator.Update();
          
             // Ou o migrator ou o Initialize
-            WebSecurity.InitializeDatabaseConnection("ILUMINACAO_PUBLICAContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            //WebSecurity.InitializeDatabaseConnection("ILUMINACAO_PUBLICAContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
 #else
             var migrator = new DbMigrator(new Configuration());
