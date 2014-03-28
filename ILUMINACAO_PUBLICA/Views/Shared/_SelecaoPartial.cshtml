@@ -1,0 +1,22 @@
+﻿@using ILUMINACAO_PUBLICA.Models;
+
+@if (Request.IsAuthenticated)
+{
+    var db = new ILUMINACAO_PUBLICAContext();
+    int UserId = WebSecurity.GetUserId(User.Identity.Name);
+    var usuario = db.UserProfiles.First(u => u.UserId == UserId);
+    
+    <div>
+    <table>
+        <tr>
+            <td class="adireita">
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <text >Olá, @User.Identity.Name.</text>  <a href="javascript:document.getElementById('logoutForm').submit()">Sair</a> }
+            </td>
+        </tr>
+    </table>
+    </div>
+   
+}

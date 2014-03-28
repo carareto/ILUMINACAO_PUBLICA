@@ -1,0 +1,65 @@
+﻿@using ILUMINACAO_PUBLICA.Models;
+@*@model SISPEX.Models.LoginModel*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISPEX</title>
+    
+    @Styles.Render("~/Content/themes/base/base")
+    @Styles.Render("~/Content/bootstrap/bootstrap")
+    @Styles.Render("~/Content/css")
+    
+    @Scripts.Render("~/bundles/jquery210")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+  
+    @Scripts.Render("~/bundles/jqgrid")
+    
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootbox")
+
+   </head>
+    <body id="page">
+        
+        
+                <table>
+                    <tr>
+                        <td>
+                            <div >
+                                <img src="~/Images/LogoDaimon.png" style="height: 40px; width: 125px"> 
+                                <div class="right" id="Selecao">
+                                    @Html.Partial("_SelecaoPartial")
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="centroExpandido">
+                               @Html.Partial("_MenuH1")
+                                <div id="centro">
+                                  @*  @Html.Partial("_MenuH2")*@
+                            
+                               @*     @Html.Partial("_MenuH3")*@
+
+                                    @RenderSection("featured", required: false)
+                                    <section class="content-wrapper main-content clear-fix">
+                                        @RenderBody()
+                                    </section>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="rodape">
+                                rodape
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+      
+    </body>
+</html>

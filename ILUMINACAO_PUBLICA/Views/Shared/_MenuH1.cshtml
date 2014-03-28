@@ -1,0 +1,78 @@
+﻿@using ILUMINACAO_PUBLICA.Models;
+
+
+
+<div id="menu1" class="navbar">
+  <div class="navbar-inner">
+   
+     @if (Request.IsAuthenticated)
+    {
+        var db = new ILUMINACAO_PUBLICAContext();
+        int UserId = WebSecurity.GetUserId(User.Identity.Name);
+        var usuario = db.UserProfiles.First(u => u.UserId == UserId);
+        string classe = "";
+        
+        <ul class="nav">
+            @{
+        classe = usuario.PosMenu1 == 1 ? "offsetMenuEsquerdaPrimeiro selected  convidadoNaoUsa" : "offsetMenuEsquerdaPrimeiro  convidadoNaoUsa"; 
+            }
+            <li class="@classe">@Html.ActionLink("TABELA 1", "SelecionaMenuH1", "Home", new { selecionado = 1}, null) </li>
+            @{
+        classe = usuario.PosMenu1 == 2 ? "selected offsetMenuEsquerda convidadoNaoUsa" : "offsetMenuEsquerda convidadoNaoUsa"; 
+            }
+            <li class="@classe">@Html.ActionLink("PROPOSTAS", "SelecionaMenuH1", "Home", new { selecionado = 3}, null) </li>
+        </ul>
+              
+} </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $('#menuH li').click(function () {
+        $('#menuH li').removeClass('selecionado');
+        $(this).addClass('selecionado');
+    });
+</script>
+
+
+ @if(User.IsInRole("Convidado"))
+    {
+        <script>
+         $(document).ready(function () {
+         $(".convidadoNaoUsa").click(function () { return false; });
+   });
+   
+        </script>
+    }
+
+@if(User.IsInRole("Admin"))
+    {
+        <script>
+            debugger
+            $(document).ready(function () {
+                $(".convidadoNaoUsa").removeClass("convidadoNaoUsa");
+            });
+
+        </script>
+    }
+
+<script>
+    $(document).ready(function () {
+
+
+        $(".offsetMenuEsquerda").click(function () {
+            bootbox.dialog({
+                message: "Aguarde alguns segundos. Carregando tabelas."
+            });
+        });
+
+
+        $(".offsetMenuEsquerdaPrimeiro").click(function () {
+            bootbox.dialog({
+                message: "Aguarde alguns segundos."
+            });
+        });
+
+    });
+</script>
